@@ -74,6 +74,7 @@ jobs:
               sudo docker pull ${{ secrets.DOCKER_REPO }}/schedulesnap
               docker-compose up -d
               docker image prune -f
+              sudo docker run -p 8080:8080 ${{ secrets.DOCKER_REPO }}/schedulesnap
 
   ## time
   current-time:
