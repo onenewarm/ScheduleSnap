@@ -38,7 +38,7 @@ jobs:
     ## create application.properties
     - name: make application.properties
       if: contains(github.ref, 'main')
-      run:
+      run: |
           cd ./Backend/src/main/resources
           touch ./application.properties
           echo "${{ secrets.PROPERTIES_PROD }}" > ./application.properties
