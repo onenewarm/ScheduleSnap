@@ -71,10 +71,10 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
-              sudo docker pull ${{ secrets.DOCKER_REPO }}/schedulesnap
+              sudo -S <<< "${{ secrets.SUDO_PASSWORD }}" docker pull ${{ secrets.DOCKER_REPO }}/schedulesnap
               docker-compose up -d
               docker image prune -f
-              sudo docker run -p 8080:8080 ${{ secrets.DOCKER_REPO }}/schedulesnap
+              sudo -S <<< "${{ secrets.SUDO_PASSWORD }}" docker run -p 8080:8080 ${{ secrets.DOCKER_REPO }}/schedulesnap
 
   ## time
   current-time:
