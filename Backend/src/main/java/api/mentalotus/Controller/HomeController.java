@@ -26,4 +26,10 @@ public class HomeController {
 
         return null;
     }
+
+    @GetMapping(path = "/home")
+    public String home()
+    {
+        return "Hello";
+    }
 }
