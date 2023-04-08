@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://my_atalas_user:dnjsck2886*@cluster0.6yxwq.mongodb.net/?retryWrites=true&w=majority #${MONGODB_URI}
+      database: mentalotus
+
+weather:
+  API_KEY: OkIOfiNqt7WkZK3w3ZYEUhcuez%2Bo2ta2a8JUDJMHyr%2BAB5hReUHQARxNJiQbx0ZxEJFrWyaLy7OBPjMO4h64iw%3D%3D

@@ -1,0 +1,8 @@
+server:
+  port:${PORT:8080}
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://my_atalas_user:dnjsck2886*@cluster0.6yxwq.mongodb.net/?retryWrites=true&w=majority
+      database: mentalotus
