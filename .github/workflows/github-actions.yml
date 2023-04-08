@@ -60,15 +60,13 @@ jobs:
           docker push ${{ secrets.DOCKER_REPO }}/schedulesnap
 
     ## deploy to production
-    - name: Deploy to prod
-      uses: appleboy/ssh-action@master
-      id: deploy-prod
-      if: contains(github.ref, 'main')
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v0.1.9
       with:
-          host: ${{ secrets.HOST_PROD }}
-          username: ec2-user
-          key: ${{ secrets.PRIVATE_KEY }}
-          envs: GITHUB_SHA
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
           script: |
               sudo docker rm -f $(docker ps -qa)
               sudo docker pull ${{ secrets.DOCKER_REPO }}/schedulesnap
