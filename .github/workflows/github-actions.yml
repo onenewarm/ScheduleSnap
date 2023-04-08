@@ -93,7 +93,11 @@ jobs:
         run: echo "Current Time=${{steps.current-time.outputs.formattedTime}}" # current-time 에서 지정한 포맷대로 현재 시간 출력
         shell: bash
 
-  ## time
+
   execute:
-        run: |
-          sudo -S <<< "${{ secrets.SUDO_PASSWORD }}" docker run -p 8080:80 ${{ secrets.DOCKER_REPO }}/schedulesnap      
+        needs: CI-CD
+        runs-on: ubuntu-latest
+        steps:
+          - name : start
+            run: |
+              sudo -S <<< "${{ secrets.SUDO_PASSWORD }}" docker run -p 8080:80 ${{ secrets.DOCKER_REPO }}/schedulesnap      
