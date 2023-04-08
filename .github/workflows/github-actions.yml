@@ -59,6 +59,9 @@ jobs:
           docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/schedulesnap .
           docker push ${{ secrets.DOCKER_REPO }}/schedulesnap
 
+
+
+
     ## deploy to production
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@v0.1.9
@@ -68,7 +71,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-              docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+              docker login ${{ secrets.DOCKER_REPO }} -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
               sudo docker rm -f $(docker ps -qa)
               sudo docker pull ${{ secrets.DOCKER_REPO }}/schedulesnap
               docker-compose up -d
