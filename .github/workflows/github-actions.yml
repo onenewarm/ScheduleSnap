@@ -76,6 +76,12 @@ jobs:
     - name: Make zip file
       run: zip -r ./schedulesnapscript.zip ./deploy
       shell: bash
+
+
+      # apllication files 복사
+    - name: Copy application.yml
+      run: cp ./src/main/resources/application.properties ./deploy
+
         
     # AWS 사용자 정보 입력
     - name: Configure AWS credentials
