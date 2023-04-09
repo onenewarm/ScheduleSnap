@@ -1,9 +1,11 @@
-name: ScheduleSnap CI/CD
+# github repository Actions 페이지에 나타낼 이름
+name: CI/CD
 
+# event trigger
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   CI-CD:
