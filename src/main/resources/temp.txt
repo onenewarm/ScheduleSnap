@@ -1,1 +1,0 @@
-resources GitHub에 사라지지 않게하기
