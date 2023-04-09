@@ -32,11 +32,11 @@ jobs:
             ${{ runner.os }}-gradle-
 
       ## create application-dev.properties
-      - name: make application.properties
+      - name: make application.yml
         run: |
           cd ./src/main/resources
-          touch ./application.properties
-          echo '${{ secrets.PROPERTIES_PROD }}' > ./application.properties
+          touch ./application.yml
+          echo '${{ secrets.PROPERTIES_PROD }}' > ./application.yml
         shell: bash
 
 
