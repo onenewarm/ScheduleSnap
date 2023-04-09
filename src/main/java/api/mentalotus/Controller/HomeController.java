@@ -30,6 +30,6 @@ public class HomeController {
     @GetMapping(path = "/home")
     public String home()
     {
-        return "마지막";
+        return "진짜 된거 맞죠?";
     }
 }
