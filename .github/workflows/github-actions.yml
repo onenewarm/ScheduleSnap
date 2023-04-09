@@ -1,8 +1,9 @@
 name: ScheduleSnap CI/CD
 
 on:
-  pull_request:
-    branches: [ main ]
+  push:
+    branches:
+      - master
 
 jobs:
   CI-CD:
