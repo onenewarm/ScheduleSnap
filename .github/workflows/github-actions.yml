@@ -87,7 +87,7 @@ jobs:
         
     # S3에 zip 파일 업로드
     - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./schedulesnapscript.zip s3://$S3_BUCKET_NAME/
+      run: aws s3 cp --region ap-northeast-2 ./schedulesnapscript.zip s3://${{ secrets.S3_BUCKET_NAME }}/
         
       # Deploy
     - name: Deploy
