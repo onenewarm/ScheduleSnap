@@ -30,6 +30,6 @@ public class HomeController {
     @GetMapping(path = "/home")
     public String home()
     {
-        return "박주성바보";
+        return "Jenkins webhook Test";
     }
 }
