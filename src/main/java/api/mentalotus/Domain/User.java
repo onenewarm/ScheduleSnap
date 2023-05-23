@@ -12,6 +12,6 @@ public class User {
     @Id
     private String userKey;
     private String nickname;
-    private String accessToken;
+    private String email;
 
 }
