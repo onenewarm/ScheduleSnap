@@ -12,7 +12,7 @@ public class UserService {
     @Autowired
     public UserService(UserRepository userRepository) {this.userRepository = userRepository;}
 
-    public User Authenticate(String accessToken) { return userRepository.findByAccessToken(accessToken); }
+    public User Authenticate(String email) { return userRepository.findByEmail(email); }
 
     public void save(User user){userRepository.save(user);}
 
