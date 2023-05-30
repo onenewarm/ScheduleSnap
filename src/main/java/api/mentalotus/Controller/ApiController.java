@@ -17,6 +17,7 @@ public class ApiController {
     @PostMapping(path = "/upload/image", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity upload_image(@RequestParam MultipartFile imgFile)
     {
+        apiservice = new ApiService(imgFile);
         return apiservice.check();
     }
 }

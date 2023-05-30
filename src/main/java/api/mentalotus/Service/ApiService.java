@@ -9,7 +9,7 @@ import static api.mentalotus.Macro.CoreMacro.checkError;
 import static api.mentalotus.Macro.CoreMacro.processException;
 
 public class ApiService {
-    ApiService(MultipartFile image){
+    public ApiService(MultipartFile image){
         _image = image;
     };
 
