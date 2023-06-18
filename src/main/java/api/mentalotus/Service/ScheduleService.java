@@ -2,12 +2,13 @@ package api.mentalotus.Service;
 
 import api.mentalotus.Domain.Schedule;
 import api.mentalotus.Repository.ScheduleRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@RequiredArgsConstructor
 @Service
 public class ScheduleService {
 
