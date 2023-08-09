@@ -1,0 +1,7 @@
+clovaConfig :
+  KEY: "R2NKUGJKVVRpa1J1RmpTZlVMZ0ZEckZxbUdYbEdjc3k="
+  URL: "https://4vhz0hz16x.apigw.ntruss.com/custom/v1/22395/3e213e975ee645b6462877268f6909145fbb134318ebfd6163233184c5f731af/general"
+
+serverConfig :
+  MAINSERVERIP: "127.0.0.1"
+  MAINSERVERPORT: 7777
