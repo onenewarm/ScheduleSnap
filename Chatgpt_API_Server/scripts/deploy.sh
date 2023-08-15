@@ -35,4 +35,4 @@ chmod +x $JAR_NAME
 
 echo "> $JAR_NAME 실행"
 #-Duser.timezone=Asia/Seoul
-nohup java -jar  $JAR_NAME > $REPOSITORY/nohup2.out 2>&1 &
+nohup java -jar  $JAR_NAME > $REPOSITORY/nohup3.out 2>&1 &
