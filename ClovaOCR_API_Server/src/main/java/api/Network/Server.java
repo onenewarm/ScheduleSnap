@@ -22,7 +22,12 @@ public class Server {
     public static void ProcessServer()
     {
         while(true) {
-            while (Global.OcrResults.isEmpty()) { }
+            while (Global.OcrResults.isEmpty())
+            {
+                try{
+                    Thread.sleep(10);
+                } catch(Exception e) {}
+            }
             Header header = new Header(1);
             OcrResult ocrResult;
             synchronized (Global.ocrLock) {

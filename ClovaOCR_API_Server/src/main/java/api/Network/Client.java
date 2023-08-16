@@ -45,7 +45,11 @@ public class Client {
     {
 
         while(true) {
-            SessionManager.GMainServerSession.ProcessRecv();
+            try{
+                SessionManager.GMainServerSession.ProcessRecv();
+                Thread.sleep(10);
+            } catch(Exception e){}
+
         }
     }
 }
