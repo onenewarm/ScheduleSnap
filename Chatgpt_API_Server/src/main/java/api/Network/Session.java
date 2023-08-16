@@ -34,6 +34,7 @@ public abstract class Session{
 
     public void ProcessRecv()
     {
+        System.out.println("ChatGpt ProcessRecv 실행됨");
         while(true)
         {
             synchronized(this) {

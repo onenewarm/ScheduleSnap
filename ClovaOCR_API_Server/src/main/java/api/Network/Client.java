@@ -78,6 +78,7 @@ class ClovaSession extends Session
                 {
                     OcrResult ocrResult = new OcrResult(scheduleIMG.get_scheduleKey(), _result);
                     Global.OcrResults.add(ocrResult);
+                    System.out.println("ocrResults에 OCR 데이터를 넣었습니다.");
                 }
 
                 System.out.println(scheduleIMG.get_extension());

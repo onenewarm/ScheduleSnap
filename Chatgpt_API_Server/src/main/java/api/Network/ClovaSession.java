@@ -19,10 +19,12 @@ public class ClovaSession extends Session
         @Override
         public void OnRecv(Header header, Object recvData)
         {
+            System.out.println("ClovaOCR로부터 받은 데이터를 ChatGPT API에게 보냅니다.")
             if (header.get_tag() == 1) {
                 try
                 {
                     OcrResult ocrResult = (OcrResult) recvData;
+                    System.out.println("ChatGPT에게 ClovaOCR 데이터를 줍니다.");
                     String answer = ServiceManager.GChatGPTService.ask(ocrResult.getResult());
                     synchronized (Global.CHATGPTLock)
                     {

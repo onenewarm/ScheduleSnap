@@ -1,0 +1,33 @@
+#chatgpt:
+#  model: gpt-3.5-turbo
+#  api:
+#    url: https://api.openai.com/v1/completions
+#    key: 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
+chatGPTConfig :
+  URL: https://api.openai.com/v1/chat/completions
+  KEY: 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
+  MODEL: gpt-3.5-turbo
+  BASE_QUERY: "OCR results are given. \n
+  OCR results are text and text coordinates. \n
+  Based on these results, perform the query below. \n
+  Answer only json format. \n
+  Translate answer in Korean. \n
+  There is a json format below. \n
+  { \n
+    Subject :(Write topic about the writing \n
+    Contents : (Write summarized the contents of the writing. Constraints : 30 words or less)\n
+    Category1 : (Select a keyword that can be related. Value of Category1 must write English. You must select value in examples. (examples: Work/Contest/Event/Reservation/Exercise/Gathering/Study/Anniversary/Leisure/Others)) \n
+    StartDate : (Write the start date of the schedule. If there is no relevant date, please leave it empty. Format: YYYY년 MM월 DD일) \n
+    StartTime : (If there is a time associated with the date you entered 'StartDate', please provide the time in 24-hour format (e.g., '20:00'); otherwise, leave it blank) \n
+    EndDate : (Write the end date of the schedule. If there is no relevant date, please leave it empty. Format: YYYY년 MM월 DD일) \n
+    EndTime : (If there is a time associated with the date you entered 'EndDate', please provide the time in 24-hour format (e.g., '20:00'); otherwise, leave it blank)\n
+    Place : (Put in a place related to the writing If there is no related place, leave it empty ) \n
+    URL : (If there is a URL form related to the writing, put it in. And if you don't have it, empty it.) \n
+  } \n
+  There are OCR results below. \n"
+
+serverConfig :
+  MAINSERVERIP: 127.0.0.1
+  CLOVASERVERIP: 127.0.0.1
+  MAINSERVERPORT: 7777
+  CLOVASERVERPORT: 8888
