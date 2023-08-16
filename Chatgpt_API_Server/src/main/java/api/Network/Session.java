@@ -28,7 +28,6 @@ public abstract class Session{
         {
             try{
                 OnSend();
-                Thread.sleep(10);
             } catch(Exception e){}
         }
     }
@@ -44,7 +43,6 @@ public abstract class Session{
                     Header header = (Header) objects.get(0);
                     Object recvData = objects.get(1);
                     OnRecv(header, recvData);
-                    Thread.sleep(10);
                 } catch (IOException e) {
                     System.out.println(e.getCause());
                     throw new RuntimeException(e);
