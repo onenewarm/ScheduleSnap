@@ -19,7 +19,7 @@ public class ClovaSession extends Session
         @Override
         public void OnRecv(Header header, Object recvData)
         {
-            System.out.println("ClovaOCR로부터 받은 데이터를 ChatGPT API에게 보냅니다.")
+            System.out.println("ClovaOCR로부터 받은 데이터를 ChatGPT API에게 보냅니다.");
             if (header.get_tag() == 1) {
                 try
                 {
