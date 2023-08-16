@@ -23,7 +23,10 @@ public class Server {
     {
         System.out.println("ClovaServer의 ProcessServer 실행됨");
         while(true) {
-            while (Global.OcrResults.isEmpty()) {  }
+            while (true)
+            {
+                if(!Global.OcrResults.isEmpty()) break;
+            }
             System.out.println("ClovaServer의 OcrResults를 처리 했습니다.");
             Header header = new Header(1);
             OcrResult ocrResult;
