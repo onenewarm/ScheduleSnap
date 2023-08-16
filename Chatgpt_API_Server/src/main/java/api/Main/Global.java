@@ -11,7 +11,7 @@ import java.util.Queue;
 @Getter
 @Setter
 public class Global {
-    public static Queue<GptResult> CHATGPTResults = new LinkedList<>();
+    public static volatile Queue<GptResult> CHATGPTResults = new LinkedList<>();
     public static Object CHATGPTLock = new Object();
     public static YMLReader YMLReader;
 }
