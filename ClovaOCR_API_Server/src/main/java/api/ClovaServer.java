@@ -30,18 +30,6 @@ public class ClovaServer {
 
         Server server = new Server();
         server.Listen();
-        {
-            Runnable targetRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    Client.ProcessClient();
-                }
-            };
-
-            MyThread myThread = new MyThread(targetRunnable);
-            Thread thread = new Thread(myThread);
-            thread.start();
-        }
 
         {
             Runnable targetRunnable = new Runnable() {
@@ -55,6 +43,22 @@ public class ClovaServer {
             Thread thread = new Thread(myThread);
             thread.start();
         }
+
+
+        {
+            Runnable targetRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    Client.ProcessClient();
+                }
+            };
+
+            MyThread myThread = new MyThread(targetRunnable);
+            Thread thread = new Thread(myThread);
+            thread.start();
+        }
+
+
 
 
     }
