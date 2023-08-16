@@ -15,8 +15,8 @@ import java.util.concurrent.locks.ReentrantLock;
 @Getter
 @Setter
 public class Global {
-    private static HashMap<String, String> ChatGptResults = new HashMap<>();
+    private static volatile HashMap<String, String> ChatGptResults = new HashMap<>();
     private static ReentrantLock _imglock = new ReentrantLock();
-    public static Queue<UploadImg> imgQueue = new LinkedList<>();
-    public static HashMap<String,String> GGptResultMap = new HashMap<String,String>();
+    public static volatile Queue<UploadImg> imgQueue = new LinkedList<>();
+    public static volatile HashMap<String,String> GGptResultMap = new HashMap<String,String>();
 }
