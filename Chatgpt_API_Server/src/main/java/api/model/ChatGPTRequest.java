@@ -12,10 +12,12 @@ public class ChatGPTRequest {
 
     private String model;
     private List<Message> messages;
+    private double temperature;
 
     public ChatGPTRequest(String model, String query) {
         this.model = model;
         this.messages = new ArrayList<>();
         this.messages.add(new Message("user", query));
+        this.temperature = 0.3;
     }
 }
