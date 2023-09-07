@@ -18,6 +18,6 @@ public class ChatGPTRequest {
         this.model = model;
         this.messages = new ArrayList<>();
         this.messages.add(new Message("user", query));
-        this.temperature = 0.3;
+        this.temperature = 0;
     }
 }

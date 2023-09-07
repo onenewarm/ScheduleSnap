@@ -37,13 +37,14 @@ public abstract class Session{
         System.out.println("ChatGpt ProcessRecv 실행됨");
         while(true)
         {
+            Header header = null;
+            Object recvData = null;
             synchronized(this) {
                 try {
                     ObjectInputStream objectInputStream = new ObjectInputStream(_RecvBuffer);
                     ArrayList<Object> objects = (ArrayList<Object>) objectInputStream.readObject();
-                    Header header = (Header) objects.get(0);
-                    Object recvData = objects.get(1);
-                    OnRecv(header, recvData);
+                    header = (Header) objects.get(0);
+                    recvData = objects.get(1);
                 } catch (IOException e) {
                     System.out.println(e.getCause());
                     throw new RuntimeException(e);
@@ -53,6 +54,7 @@ public abstract class Session{
                     System.out.println(e.getCause());
                 }
             }
+            if(header != null) OnRecv(header, recvData);
         }
     }
 

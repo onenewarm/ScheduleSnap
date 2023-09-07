@@ -31,34 +31,41 @@ public class ClovaServer {
         Server server = new Server();
         server.Listen();
 
+        for(int i=0;i<2;++i)
         {
-            Runnable targetRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    Server.ProcessServer();
-                }
-            };
+            {
+                Runnable targetRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        Server.ProcessServer();
+                    }
+                };
 
-            MyThread myThread = new MyThread(targetRunnable);
-            Thread thread = new Thread(myThread);
-            thread.start();
+                MyThread myThread = new MyThread(targetRunnable);
+                Thread thread = new Thread(myThread);
+                thread.start();
+            }
         }
 
 
+
+
+
+        for(int i=0;i<2;++i)
         {
-            Runnable targetRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    Client.ProcessClient();
-                }
-            };
+            {
+                Runnable targetRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        Client.ProcessClient();
+                    }
+                };
 
-            MyThread myThread = new MyThread(targetRunnable);
-            Thread thread = new Thread(myThread);
-            thread.start();
+                MyThread myThread = new MyThread(targetRunnable);
+                Thread thread = new Thread(myThread);
+                thread.start();
+            }
         }
-
-
 
 
     }

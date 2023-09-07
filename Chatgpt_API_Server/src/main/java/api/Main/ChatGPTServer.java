@@ -16,11 +16,10 @@ import org.yaml.snakeyaml.constructor.Constructor;
 public class ChatGPTServer {
     public static void main(String[] args) {
 
-        try{
+        try {
             Yaml yaml = new Yaml(new Constructor(YMLReader.class));
             Global.YMLReader = (YMLReader) yaml.load(new ClassPathResource("application.yml").getInputStream());
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getCause());
         }
 
@@ -31,17 +30,21 @@ public class ChatGPTServer {
         SessionManager.GClovaServerSession = (ClovaSession) client.Connect(Global.YMLReader.getServerConfig().getCLOVASERVERIP(),
                 Global.YMLReader.getServerConfig().getCLOVASERVERPORT());
 
-        {
-            Runnable targetRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    SessionManager.GClovaServerSession.ProcessRecv();
-                }
-            };
 
-            MyThread myThread = new MyThread(targetRunnable);
-            Thread thread = new Thread(myThread);
-            thread.start();
+        for(int i=0;i<2;++i)
+        {
+            {
+                Runnable targetRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        SessionManager.GClovaServerSession.ProcessRecv();
+                    }
+                };
+
+                MyThread myThread = new MyThread(targetRunnable);
+                Thread thread = new Thread(myThread);
+                thread.start();
+            }
         }
 
         {

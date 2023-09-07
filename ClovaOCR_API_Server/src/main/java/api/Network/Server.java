@@ -31,10 +31,15 @@ public class Server {
             Header header = new Header(1);
             OcrResult ocrResult;
             synchronized (Global.ocrLock) {
+                if(Global.OcrResults.isEmpty()) continue;
                 ocrResult = Global.OcrResults.poll();
                 System.out.println("OcrResults를 chatGPT로 보냈습니다.");
             }
-            SessionManager.GChatGptSession.OnSend(header, ocrResult);
+
+            if(ocrResult != null)
+            {
+                SessionManager.GChatGptSession.OnSend(header, ocrResult);
+            }
         }
     }
 }
