@@ -9,6 +9,7 @@ import api.Service.ServiceManager;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.concurrent.CompletableFuture;
 
 public class ClovaSession extends Session
 {
@@ -25,7 +26,8 @@ public class ClovaSession extends Session
                 {
                     OcrResult ocrResult = (OcrResult) recvData;
                     System.out.println("ChatGPT에게 ClovaOCR 데이터를 줍니다.");
-                    String answer = ServiceManager.GChatGPTService.ask(ocrResult.getResult());
+                    CompletableFuture<String> future = ServiceManager.GChatGPTService.ask(ocrResult.getResult());
+                    String answer = future.get();
                     synchronized (Global.CHATGPTLock)
                     {
                         GptResult gptResult = new GptResult(ocrResult.getKey(), answer);
