@@ -61,7 +61,7 @@ public class ApiService {
         }
 
     }
-    private static String generateUniqueRandomKey() {
+    public static String generateUniqueRandomKey() {
         Random random = new Random();
         int randomNumber;
 

@@ -1,12 +1,15 @@
 package api.mentalotus.Network;
 
+import SocketSharedData.GptQuestion;
 import SocketSharedData.GptResult;
 import SocketSharedData.Header;
 import api.mentalotus.Main.Global;
 
 import java.io.InputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 
 public class ChatGptSession extends Session{
@@ -38,6 +41,21 @@ public class ChatGptSession extends Session{
     @Override
     public void OnSend(Header header, Object sendData)
     {
-
+        if(header.get_tag() == 2)
+        {
+            try
+            {
+                sendData = (GptQuestion)sendData;
+                OutputStream outputStream  = SessionManager.GChatGptSession.get_socket().getOutputStream();
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+                ArrayList<Object> objects = new ArrayList<>();
+                objects.add(header);
+                objects.add(sendData);
+                objectOutputStream.writeObject(objects);
+            }catch(Exception e)
+            {
+                System.out.println(e.getCause() + " ChatGpt로 OCRResult를 보내는 곳에서 문제가 발생했습니다.");
+            }
+        }
     }
 }

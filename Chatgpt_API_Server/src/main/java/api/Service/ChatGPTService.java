@@ -55,4 +55,37 @@ public class ChatGPTService {
 
         return result;
     }
+
+    public CompletableFuture<String> qask(String qestion) {
+        String query = qestion;
+        ChatGPTRequest request = new ChatGPTRequest(Global.YMLReader.getChatGPTConfig().getMODEL(), query);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Bearer " + Global.YMLReader.getChatGPTConfig().getKEY());
+
+        HttpEntity<ChatGPTRequest> entity = new HttpEntity<>(request, headers);
+
+        ListenableFuture<ResponseEntity<ChatGPTResponse>> futureResponse = asyncRestTemplate.exchange(
+                Global.YMLReader.getChatGPTConfig().getURL(),
+                HttpMethod.POST,
+                entity,
+                ChatGPTResponse.class
+        );
+
+        // CompletableFuture를 사용하여 비동기 응답을 반환합니다.
+        CompletableFuture<String> result = new CompletableFuture<>();
+
+        futureResponse.addCallback(
+                response -> {
+                    ChatGPTResponse chatGPTResponse = response.getBody();
+                    String content = chatGPTResponse.getChoices().get(0).getMessage().getContent();
+                    result.complete(content); // 비동기 결과를 완료합니다.
+                },
+                ex -> {
+                    result.completeExceptionally(ex); // 에러 처리
+                }
+        );
+
+        return result;
+    }
 }

@@ -47,6 +47,22 @@ public class ChatGPTServer {
             }
         }
 
+        for(int i=0;i<1;++i)
+        {
+            {
+                Runnable targetRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        SessionManager.GMainServerSession.ProcessRecv();
+                    }
+                };
+
+                MyThread myThread = new MyThread(targetRunnable);
+                Thread thread = new Thread(myThread);
+                thread.start();
+            }
+        }
+
         {
             Runnable targetRunnable = new Runnable() {
                 @Override
