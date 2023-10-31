@@ -3,15 +3,18 @@ package api.mentalotus.Service;
 import SocketSharedData.Header;
 import api.mentalotus.Domain.UploadImg;
 import SocketSharedData.ScheduleIMG;
+import api.mentalotus.Main.Global;
 import api.mentalotus.Network.SessionManager;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Random;
+import java.util.concurrent.CompletableFuture;
 
 import static api.mentalotus.Macro.CoreMacro.processException;
 
@@ -86,6 +89,17 @@ public class ApiService {
         {
             throw new NullPointerException("이미지가 만료 했으므로 다시 재업로드 해주어야 합니다.");
         }
+    }
+
+    @Async
+    public CompletableFuture<String> waitForResult(String key) {
+        String result = null;
+        while (result == null) {
+            result = Global.GGptResultMap.get(key);
+        }
+
+        Global.GGptResultMap.remove(key);
+        return CompletableFuture.completedFuture(result);
     }
 
     private int MAX_IMAGE_SIZE = 0x500000;
