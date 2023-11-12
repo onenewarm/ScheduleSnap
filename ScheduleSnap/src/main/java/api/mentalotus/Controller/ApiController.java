@@ -72,7 +72,7 @@ public class ApiController {
         "{\n" +
         "    Subject : (Provide a title for the writing. Note that it should not be in the form of a sentence.)\n"+
         "    Contents : (Write summarized the contents of the writing. Constraints : 30 words or less)\n" +
-        "    Category : You must select value in examples.(examples: 기념일/공연/대회/축제/운동/모임/여가/예약/공부/업무/기타), (Look at Title and choose Category. If you select 기타, look at the Contents and choose.)\n" +
+        "    Category : (Select a keyword that can be related. You must select value in examples. (examples: 기념일/대회/공연/축제/운동/모임/여가/예약/공부/업무/기타))\n" +
         "    StartDate : (Write the start date of the schedule. If there is no relevant date, please leave it empty. Format:YYYY-MM-DD) + (If there is a time associated with the date you entered 'StartDate', Constraints : the time in 24-hour format, otherwise, leave it blank)\n" +
         "    EndDate : (Write the end date of the schedule. If there is no relevant date, please leave it empty. Format:YYYY-MM-DD) + (If there is a time associated with the date you entered 'EndDate', Constraints : the time in 24-hour format ; otherwise, leave it blank)\n" +
         "    Place : (Please put in a place related to the writing If there is no related place, leave it empty )\n"+
