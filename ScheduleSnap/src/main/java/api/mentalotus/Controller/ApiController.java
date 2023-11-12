@@ -67,19 +67,15 @@ public class ApiController {
         String key = generateUniqueRandomKey();
         String question = text + "I'm going to make a JSON type. Please do the format of JSON type as I wrote it.\n " +
         "json cannot contain special characters in the value.\n" +
-        "And make sure to match the 24-hour format (ex, 'hh:mm', '15:44', and '21:00') when marking the time\n" +
-        "When expressing the date, it must be written in accordance with (Format: YYYY년 MM월 DD일),(ex: '2022년 03월 08일', '1999년 10월 26일' ).\n" +
+        "Ensure that 'StartDate' and 'EndDate' are formatted in ISO 8601 date and time format.If there is no specific time applicable, represent it as '23:59:00'.(ex: YYYY-MM-DD hh:mm:ss ,'2023-05-16 15:30:00' ,'2022-11-25 22:00:00')\n" +
         "json format : \n" +
         "{\n" +
-        "    Title : (Provide a title for the writing. Note that it should not be in the form of a sentence.)\n"+
+        "    Subject : (Provide a title for the writing. Note that it should not be in the form of a sentence.)\n"+
         "    Contents : (Write summarized the contents of the writing. Constraints : 30 words or less)\n" +
-        "    Category1 : You must select value in examples.(examples: 기념일/공연/대회/축제/운동/모임/여가/예약/공부/업무/기타), (Look at Title and choose Category. If you select 기타, look at the Contents and choose.)\n" +
-        "    StartDate : (Please include the start date of the schedule. If there is no relevant date, please leave it empty.Constraints : (Format YYYY년 MM월 DD일)\n" +
-        "    StartTime : (If there is a time associated with the date you entered 'StartDate', Constraints : the time in 24-hour format, otherwise, leave it blank)\n" +
-        "    EndDate : (Please include the end date of the schedule. If there is no relevant date, please leave it empty. Constraints : (Format YYYY년 MM월 DD일)\n" +
-        "    EndTime :(If there is a time associated with the date you entered 'EndDate', Constraints : the time in 24-hour format (e.g., '20:00'); otherwise, leave it blank)\n" +
+        "    Category : You must select value in examples.(examples: 기념일/공연/대회/축제/운동/모임/여가/예약/공부/업무/기타), (Look at Title and choose Category. If you select 기타, look at the Contents and choose.)\n" +
+        "    StartDate : (Write the start date of the schedule. If there is no relevant date, please leave it empty. Format:YYYY-MM-DD) + (If there is a time associated with the date you entered 'StartDate', Constraints : the time in 24-hour format, otherwise, leave it blank)\n" +
+        "    EndDate : (Write the end date of the schedule. If there is no relevant date, please leave it empty. Format:YYYY-MM-DD) + (If there is a time associated with the date you entered 'EndDate', Constraints : the time in 24-hour format ; otherwise, leave it blank)\n" +
         "    Place : (Please put in a place related to the writing If there is no related place, leave it empty )\n"+
-        "    URL : (If there is a URL form related to the writing, please put it in. And if you don't have it, please empty it.)\n"+
         "}\n"+
         "답변은 json형식만 나와야 합니다. json형식 외에 다른 comment는 작성하지 말아주세요.\n";
         GptQuestion gptQuestion = new GptQuestion(key, question);
