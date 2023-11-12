@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import api.mentalotus.Service.ApiService;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.concurrent.CompletableFuture;
 
 import static api.mentalotus.Network.SessionManager.GChatGptSession;
@@ -34,7 +36,9 @@ public class ApiController {
     {
         Header header = new Header(2);
         String key = generateUniqueRandomKey();
-        question += " 답변은 100자 이내로 해주세요. 정보 성격의 답변을 해줘.";
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        question += " 답변은 50자 이내로 해주세요." + "하나의 결과는 10글자 이내로 작성해주세요.\n" +
+                "seed 값을" + timestamp + key +"로 설정하여 답변해주세요.";;
         GptQuestion gptQuestion = new GptQuestion(key, question);
         GChatGptSession.OnSend(header, gptQuestion);
         CompletableFuture<String> resultFuture = apiService.waitForResult(key);
@@ -46,8 +50,10 @@ public class ApiController {
     {
         Header header = new Header(2);
         String key = generateUniqueRandomKey();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String question = category + "과 관련된 오늘의 Todo List를 " + Count + "개 만들어줘.\n" +
-                "결과는 String 배열로 넘겨줘. String 배열 이외에 다른 출력은 하지 말아줘.";
+                "하나의 결과는 10글자 이내로 작성해주세요.\n" +
+                "seed 값을" + timestamp + key +"로 설정하여 답변해주세요.";
         GptQuestion gptQuestion = new GptQuestion(key, question);
         GChatGptSession.OnSend(header, gptQuestion);
         CompletableFuture<String> resultFuture = apiService.waitForResult(key);
